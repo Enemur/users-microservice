@@ -1,0 +1,45 @@
+{
+  "name": "grpc-microservice",
+  "version": "1.0.0",
+  "scripts": {
+    "build": "npm run build:grpc && npm run build:ts",
+    "build:ts": "rimraf dist && tsc -p tsconfig.build.json",
+    "build:grpc": "node tools/build-grpc-back.js",
+    "start": "cross-env TS_NODE=true ts-node -r tsconfig-paths/register src/main.ts",
+    "start:dev": "tsc-watch -p tsconfig.build.json --onSuccess \"node dist/main.js\"",
+    "start:prod": "node dist/main.js",
+    "typeorm": "cross-env TS_NODE=true ts-node ./node_modules/typeorm/cli.js"
+  },
+  "dependencies": {
+    "@grpc/proto-loader": "^0.5.4",
+    "@nestjs/common": "^6.11.8",
+    "@nestjs/core": "^6.11.8",
+    "@nestjs/microservices": "^6.11.8",
+    "@nestjs/typeorm": "^6.2.0",
+    "class-transformer": "^0.2.3",
+    "class-validator": "^0.11.0",
+    "dotenv": "^8.0.0",
+    "grpc": "^1.24.3",
+    "pg": "^7.17.1",
+    "reflect-metadata": "0.1.13",
+    "rxjs": "^6.5.2",
+    "typeorm": "^0.2.22",
+    "typeorm-naming-strategies": "^1.1.0",
+    "@hapi/joi": "^15.1.0",
+    "@nestjs/terminus": "^6.5.0",
+    "bcrypt": "^3.0.8",
+    "@godaddy/terminus": "^4.1.2"
+  },
+  "devDependencies": {
+    "cross-env": "^7.0.2",
+    "@types/bcrypt": "^3.0.0",
+    "@types/node": "^12.7.1",
+    "@types/hapi__joi": "^15.0.3",
+    "ts-node": "^8.3.0",
+    "tsc-watch": "^2.4.0",
+    "tsconfig-paths": "3.8.0",
+    "typescript": "^3.8.2",
+    "rimraf": "2.6.3",
+    "fs-extra": "^9.0.1"
+  }
+}

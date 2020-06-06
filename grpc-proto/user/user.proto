@@ -1,0 +1,34 @@
+syntax = "proto3";
+
+package api.user;
+
+import "user.types.proto";
+
+service UserService {
+  rpc CreateUser (CreateUserReq) returns (User) {}
+
+  rpc UpdateUser (UpdateUserReq) returns (User) {}
+
+  rpc GetUser (UserReq) returns (User) {}
+
+  rpc GetUserStream (UserStreamReq) returns (stream User) {}
+}
+
+message CreateUserReq {
+  string name = 1;
+  string email = 2;
+  string password = 3;
+}
+
+message UpdateUserReq {
+  string id = 1;
+  string name = 2;
+}
+
+message UserReq {
+  string id = 1;
+}
+
+message UserStreamReq {
+  string id = 1;
+}
